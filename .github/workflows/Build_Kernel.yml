@@ -219,6 +219,7 @@ jobs:
       - name: Setup LXC Docker
         if: inputs.with_lxc == true
         run: |
+          cd "$KERNEL_SOURCE"
           git submodule add https://github.com/tomxi1997/lxc-docker-support-for-android utils
           chmod +x ./utils/lxc-patch.sh
           sed -i 's/vendor\/cmi_user_defconfig/${DEVICE}_defconfig/g' ./utils/lxc-patch.sh
